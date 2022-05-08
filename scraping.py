@@ -12,19 +12,14 @@ def scrape_all():
     
     news_title, news_paragraph = mars_news(browser)
 
-    # create new dictionary to hold list of dictionaries with URL string and title of each hemisphere image
-    #data = {'img_url': 'https://marshemispheres.com/images/full.jpg',
-    #'title': 'Cerberus Hemisphere Enhanced',
-    #'img_url': 'https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg',
-    #'title': 'Schiaparelli Hemisphere Enhanced',
-    #'img_url': 'https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg',
-    #'title': 'Syrtis Major Hemisphere Enhanced',
-    #'img_url': 'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg',
-    #'title': 'Valles Marineris Hemisphere Enhanced'}
-
-    data = {'titles':['Cerberus Hemisphere Enhanced', 'Schiaparelli Hemisphere Enhanced', 'Syrtis Major Hemisphere Enhanced', 'Valles Marineris Hemisphere Enhanced'],
-    'urls':['https://marshemispheres.com/images/full.jpg', 'https://marshemispheres.com/images/schiaparelli_enhanced-full.jpg', 'https://marshemispheres.com/images/syrtis_major_enhanced-full.jpg'
-    'https://marshemispheres.com/images/valles_marineris_enhanced-full.jpg']}
+    data = {
+       "news_title": news_title,
+       "news_paragraph": news_paragraph,
+       "featured_image": featured_image(browser),
+       "facts": mars_facts(),
+       "hemispheres": hemispheres(browser),
+       "last_modified": dt.datetime.now()
+   } 
     
     # Stop webdriver and return data
     browser.quit()
@@ -146,13 +141,6 @@ def scrape_hemisphere(html_text):
     }
 
     return hemispheres
-
-
-
-
-
-
-
 
 if __name__ == "__main__":
     # If running as script, print scraped data
