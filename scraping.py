@@ -19,7 +19,7 @@ def scrape_all():
        "facts": mars_facts(),
        "hemispheres": hemispheres(browser),
        "last_modified": dt.datetime.now()
-   } 
+    } 
     
     # Stop webdriver and return data
     browser.quit()
